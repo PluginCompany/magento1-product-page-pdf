@@ -1,0 +1,8 @@
+<div id="download_pdf_wrapper" style="display:none">
+    <?php echo $this->getChildHtml('download_pdf_button'); ?>
+</div>
+<script>
+    $$('.content-header .scalable.back')[0].insert({
+            after: $('download_pdf_wrapper').innerHTML
+        })
+</script>

@@ -1,0 +1,24 @@
+<?php if($this->isEnabled()){ ?>
+
+<a class='<?php echo $this->getLinkClasses();?> plugincompany productleaflet' href='<?php echo $this->getPdfUrl();?>' target='_blank' id="pc_pdf_link">
+    <?php if($this->displayLink()){ ?>
+        <span><?php echo $this->getLinkText();?></span>
+    <?php } ?>
+    <?php if($this->displayIcon()){ ?>
+        <img title="<?php echo $this->getLinkText();?>" alt="<?php echo $this->getLinkText(); ?>" id="pc_pdf_icon" src="<?php echo $this->getIconUrl();?>" /> <?php echo $this->getLinkText(); ?>
+    <?php } ?>
+</a>
+<style type="text/css">
+    <?php if($this->getIconCss()){ ?>
+        #pc_pdf_icon {
+            <?php echo $this->getIconCss();?>
+        }
+    <?php } ?>
+    <?php if($this->getLinkCss()){ ?>
+        #pc_pdf_link {
+            <?php echo $this->getLinkCss();?>
+        }
+    <?php } ?>
+</style>
+
+<?php } ?>

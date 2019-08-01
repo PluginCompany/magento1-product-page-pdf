@@ -1,0 +1,11 @@
+<div class="product-price <?php if($this->getTierPrices()){ echo 'has-tiers';} ?>">
+    <?php echo $this->getPriceHtml(); ?>
+    <?php echo $this->getProduct()->getMinimalPrice(); ?>
+    <?php if($prices = $this->getTierPrices()){ ?>
+        <div class="tier-price-wrapper">
+            <?php echo $this->getTierPriceHtml(); ?>
+        </div>
+    <?php } ?>
+</div>
+
+

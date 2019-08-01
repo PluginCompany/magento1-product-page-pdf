@@ -1,0 +1,1181 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2014-2026 Plugin Company
+ *
+ * This file is part of Product Page PDF, released under the MIT License.
+ * See the LICENSE file in the project root.
+ */
+-->
+<config>
+    <sections>
+        <plugincompany_productleaflet translate="label" module="plugincompany_productleaflet">
+            <label>Product Page PDF</label>
+            <tab>catalog</tab>
+            <sort_order>10000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <frontend translate="label">
+                    <label>Front-end Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>00</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable_extension>
+                            <label>Enable Extension</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Add PDF download functionality to all product pages.</comment>
+                        </enable_extension>
+                        <insert_after>
+                            <label>PDF Link / Icon Position</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_blockposition</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Product page block in which the PDF download link or icon is displayed.</comment>
+                        </insert_after>
+                        <show_as>
+                            <label>Display Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_blocktype</source_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show a PDF download link or icon.</comment>
+                        </show_as>
+                        <icon_img translate="label comment">
+                            <label>Upload Icon</label>
+                            <comment><![CDATA[Allowed file types: .jpeg, .gif, .png<br>Leave empty to use default PDF icon.]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">plugincompany/productleaflet</upload_dir>
+                            <base_url type="media" scope_info="1">plugincompany/productleaflet</base_url>
+                            <sort_order>400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_as>icon</show_as>
+                            </depends>
+                        </icon_img>
+                        <icon_css>
+                            <label>Custom Icon CSS</label>
+                            <comment>Custom CSS for PDF download icon.</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_customCss</frontend_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>500</sort_order>
+                            <depends>
+                                <show_as>icon</show_as>
+                            </depends>
+                        </icon_css>
+                        <link_text>
+                            <label>Link Title</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>600</sort_order>
+                            <comment>Default link title is 'Download PDF', which will function as the image title and alt attribute if an icon is used.</comment>
+                        </link_text>
+                        <link_css>
+                            <label>Custom Link CSS</label>
+                            <frontend_type>textarea</frontend_type>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_customCss</frontend_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>700</sort_order>
+                            <comment>Custom CSS for PDF download link.</comment>
+                        </link_css>
+                        <link_classes>
+                            <label>Custom CSS Classes</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>800</sort_order>
+                            <comment>Enter custom CSS classes separated by a space, for example: btn btn-primary pull-right</comment>
+                        </link_classes>
+                        <enable_print_window>
+                            <label>Show Print Window</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>900</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable this to directly show a print window in the browser when a PDF is opened.</comment>
+                        </enable_print_window>
+                    </fields>
+                </frontend>
+                <general translate="label">
+                    <label>General PDF Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <default_fontsize translate="label">
+                            <label>Default Font Size</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_fontsize</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </default_fontsize>
+                        <default_fontcolor translate="label">
+                            <label>Default Font Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </default_fontcolor>
+                        <default_fontfamily translate="label">
+                            <label>Default Font Family</label>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_fontPicker</frontend_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </default_fontfamily>
+                    </fields>
+                </general>
+                <header translate="label">
+                    <label>PDF Header Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_header>
+                            <label>Show Header</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_header>
+                        <default_img translate="label,comment">
+                            <label>Use Default Store Logo</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                            </depends>
+                        </default_img>
+                        <logo_img translate="label comment">
+                            <label>Custom Store Logo</label>
+                            <comment><![CDATA[Allowed file types: .jpeg, .gif, .png]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">plugincompany/productleaflet</upload_dir>
+                            <base_url type="media" scope_info="1">plugincompany/productleaflet</base_url>
+                            <sort_order>111</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                                <default_img>0</default_img>
+                            </depends>
+                        </logo_img>
+                        <show_store_title translate="label">
+                            <label>Show Store Name</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                            </depends>
+                        </show_store_title>
+                        <store_title translate="label">
+                            <label>Store Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>121</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                                <show_store_title>1</show_store_title>
+                            </depends>
+                            <comment>Leave empty to use the default store name</comment>
+                        </store_title>
+                        <store_title_fontsize translate="label">
+                            <label>Store Name Font Size</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_fontsize</source_model>
+                            <sort_order>122</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                                <show_store_title>1</show_store_title>
+                            </depends>
+                        </store_title_fontsize>
+                        <store_title_color translate="label">
+                            <label>Store Name Font Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>123</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                                <show_store_title>1</show_store_title>
+                            </depends>
+                        </store_title_color>
+                        <use_custom_title_font translate="label">
+                            <label>Use Custom Store Name Font</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>124</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                                <show_store_title>1</show_store_title>
+                            </depends>
+                        </use_custom_title_font>
+                        <store_name_fontfamily translate="label">
+                            <label>Store Name Font Family</label>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_fontPicker</frontend_model>
+                            <sort_order>125</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                                <show_store_title>1</show_store_title>
+                                <use_custom_title_font>1</use_custom_title_font>
+                            </depends>
+                        </store_name_fontfamily>
+                        <header_1 translate="label">
+                            <label>Left Header Text Content</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                            </depends>
+                        </header_1>
+                        <header_2 translate="label">
+                            <label>Center Header Text Content</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                            </depends>
+                        </header_2>
+                        <header_3 translate="label">
+                            <label>Right Header Text Content</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                            </depends>
+                        </header_3>
+                        <header_fontsize translate="label">
+                            <label>Header Text Font Size</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_fontsize</source_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                            </depends>
+                        </header_fontsize>
+                        <header_fontcolor translate="label">
+                            <label>Header Text Font Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                            </depends>
+                        </header_fontcolor>
+                        <use_custom_font translate="label">
+                            <label>Use Custom Header Font</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                            </depends>
+                        </use_custom_font>
+                        <fontfamily translate="label">
+                            <label>Header Font Family</label>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_fontPicker</frontend_model>
+                            <sort_order>181</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                                <use_custom_font>1</use_custom_font>
+                            </depends>
+                        </fontfamily>
+                        <show_bottomline translate="label">
+                            <label>Show Header Separator</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                            </depends>
+                        </show_bottomline>
+                        <bottomline_thickness translate="label">
+                            <label>Header Separator Thickness</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>text</source_model>
+                            <source_model>plugincompany_productleaflet/system_config_source_linethickness</source_model>
+                            <sort_order>191</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                                <show_bottomline>1</show_bottomline>
+                            </depends>
+                        </bottomline_thickness>
+                        <bottomline_color translate="label">
+                            <label>Header Separator Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>192</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_header>1</show_header>
+                                <show_bottomline>1</show_bottomline>
+                            </depends>
+                        </bottomline_color>
+                    </fields>
+                </header>
+                <section_header translate="label">
+                    <label>Content Section Heading Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <section_header_fontsize translate="label">
+                            <label>Section Heading Font Size</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_fontsize</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </section_header_fontsize>
+                        <section_header_color translate="label">
+                            <label>Section Heading Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </section_header_color>
+                        <use_custom_section_header_font translate="label">
+                            <label>Use Custom Section Heading Font</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </use_custom_section_header_font>
+                        <section_header_fontfamily translate="label">
+                            <label>Custom Section Heading Font</label>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_fontPicker</frontend_model>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <use_custom_section_header_font>1</use_custom_section_header_font>
+                            </depends>
+                        </section_header_fontfamily>
+                    </fields>
+                </section_header>
+                <sectionsort translate="label">
+                    <label>Content Section Sort Order</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>31</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <sort_order translate="label">
+                            <label>Sort Content Sections</label>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_sectionSort</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Drag and drop sections to change their sort order.</comment>
+                        </sort_order>
+                    </fields>
+                </sectionsort>
+                <title_price translate="label">
+                    <label>Product Title and Price Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>32</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <title_fontsize translate="label">
+                            <label>Product Title Font Size</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_fontsize</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_fontsize>
+                        <title_fontcolor translate="label">
+                            <label>Product Title Font Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_fontcolor>
+                        <use_custom_product_title_font translate="label">
+                            <label>Use Custom Product Title Font</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </use_custom_product_title_font>
+                        <product_title_fontfamily translate="label">
+                            <label>Product Title Font Family</label>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_fontPicker</frontend_model>
+                            <sort_order>121</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <use_custom_product_title_font>1</use_custom_product_title_font>
+                            </depends>
+                        </product_title_fontfamily>
+                        <show_product_price translate="label">
+                            <label>Show Product Price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_product_price>
+                        <price_fontsize translate="label">
+                            <label>Product Price Font Size</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_fontsize</source_model>
+                            <sort_order>131</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_product_price>1</show_product_price>
+                            </depends>
+                        </price_fontsize>
+                        <price_fontcolor translate="label">
+                            <label>Product Price Font Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>132</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_product_price>1</show_product_price>
+                            </depends>
+                        </price_fontcolor>
+                        <use_custom_price_font translate="label">
+                            <label>Use Custom Product Price Font</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>133</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_product_price>1</show_product_price>
+                            </depends>
+                        </use_custom_price_font>
+                        <price_font_family translate="label">
+                            <label>Product Price Font Family</label>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_fontPicker</frontend_model>
+                            <sort_order>134</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_product_price>1</show_product_price>
+                                <use_custom_price_font>1</use_custom_price_font>
+                            </depends>
+                        </price_font_family>
+                        <price_background translate="label">
+                            <label>Product Price Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_product_price>1</show_product_price>
+                            </depends>
+                        </price_background>
+                        <add_pagebreak translate="label">
+                            <label>Show on New Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show this section on a new page instead of adding it to an existing page.</comment>
+                        </add_pagebreak>
+                    </fields>
+                </title_price>
+                <gallery translate="label">
+                    <label>Image Gallery Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>33</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_images translate="label">
+                            <label>Show Image Gallery</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_images>
+                        <gallery_style translate="label">
+                            <label>Image Gallery Style</label>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_galleryPicker</frontend_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>gallery-style</validate>
+                            <depends>
+                                <show_images>1</show_images>
+                            </depends>
+                        </gallery_style>
+                        <add_gallery_border translate="label">
+                            <label>Show Image Border</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_images>1</show_images>
+                            </depends>
+                        </add_gallery_border>
+                        <gallery_border_color translate="label">
+                            <label>Image Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>121</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_images>1</show_images>
+                                <add_gallery_border>1</add_gallery_border>
+                            </depends>
+                        </gallery_border_color>
+                        <add_child_images translate="label">
+                            <label>Show Configurable Child Images</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_images>1</show_images>
+                            </depends>
+                            <comment>Add the images of child products to configurable product media gallery.</comment>
+                        </add_child_images>
+                        <filter_duplicate_images translate="label">
+                            <label>Filter Duplicate Images</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_images>1</show_images>
+                            </depends>
+                            <comment>Automatically filter out duplicate product images.</comment>
+                        </filter_duplicate_images>
+                        <gallery_image_count translate="label">
+                            <label>Gallery Image Count</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>145</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>The maximum amount of additional gallery images to show in the PDF.</comment>
+                        </gallery_image_count>
+                        <add_pagebreak translate="label">
+                            <label>Show on New Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show this section on a new page instead of adding it to an existing page.</comment>
+                            <depends>
+                                <show_images>1</show_images>
+                            </depends>
+                        </add_pagebreak>
+                    </fields>
+                </gallery>
+                <short_description translate="label">
+                    <label>Short Description Settings</label>
+                    <sort_order>34</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <show_short_description translate="label">
+                            <label>Show Short Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_short_description>
+                        <add_pagebreak translate="label">
+                            <label>Show on New Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show this section on a new page instead of adding it to an existing page.</comment>
+                            <depends>
+                                <show_short_description>1</show_short_description>
+                            </depends>
+                        </add_pagebreak>
+                    </fields>
+                </short_description>
+                <description translate="label">
+                    <label>Product Description Settings</label>
+                    <sort_order>35</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <show_description translate="label">
+                            <label>Show Product Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_description>
+                        <add_pagebreak translate="label">
+                            <label>Show on New Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show this section on a new page instead of adding it to an existing page.</comment>
+                            <depends>
+                                <show_description>1</show_description>
+                            </depends>
+                        </add_pagebreak>
+                    </fields>
+                </description>
+                <additional_information translate="label">
+                    <label>Additional Information Settings</label>
+                    <sort_order>36</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <show_additional_information translate="label">
+                            <label>Show Additional Information</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_additional_information>
+                        <add_pagebreak translate="label">
+                            <label>Show on New Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show this section on a new page instead of adding it to an existing page.</comment>
+                            <depends>
+                                <show_additional_information>1</show_additional_information>
+                            </depends>
+                        </add_pagebreak>
+                        <hide_empty_attributes translate="label">
+                            <label>Hide Empty Attributes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Automatically hide product attributes with no value.</comment>
+                            <depends>
+                                <show_additional_information>1</show_additional_information>
+                            </depends>
+                        </hide_empty_attributes>
+                    </fields>
+                </additional_information>
+                <configurable_product translate="label">
+                    <label>Configurable Product Settings</label>
+                    <sort_order>37</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <show_configurable_product_options translate="label">
+                            <label>Show Configurable Product Options</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_configurable_product_options>
+                        <add_pagebreak translate="label">
+                            <label>Show on New Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show this section on a new page instead of adding it to an existing page.</comment>
+                            <depends>
+                                <show_configurable_product_options>1</show_configurable_product_options>
+                            </depends>
+                        </add_pagebreak>
+                        <show_price translate="label">
+                            <label>Show Item Price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_showPrice</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Choose whether to show the child item prices or not.</comment>
+                            <depends>
+                                <show_configurable_product_options>1</show_configurable_product_options>
+                            </depends>
+                        </show_price>
+                    </fields>
+                </configurable_product>
+                <bundle_product translate="label">
+                    <label>Bundled Product Settings</label>
+                    <sort_order>38</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <show_bundle_product_options translate="label">
+                            <label>Show Bundled Product Options</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_bundle_product_options>
+                        <add_pagebreak translate="label">
+                            <label>Show on New Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show this section on a new page instead of adding it to an existing page.</comment>
+                            <depends>
+                                <show_bundle_product_options>1</show_bundle_product_options>
+                            </depends>
+                        </add_pagebreak>
+                        <show_price translate="label">
+                            <label>Show Item Price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_showPrice</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Choose whether to show the child item prices or not.</comment>
+                            <depends>
+                                <show_bundle_product_options>1</show_bundle_product_options>
+                            </depends>
+                        </show_price>
+                    </fields>
+                </bundle_product>
+                <grouped_product translate="label">
+                    <label>Grouped Product Settings</label>
+                    <sort_order>39</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <show_grouped_product_options translate="label">
+                            <label>Show Grouped Product Options</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_grouped_product_options>
+                        <add_pagebreak translate="label">
+                            <label>Show on New Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show this section on a new page instead of adding it to an existing page.</comment>
+                            <depends>
+                                <show_grouped_product_options>1</show_grouped_product_options>
+                            </depends>
+                        </add_pagebreak>
+                        <show_price translate="label">
+                            <label>Show Item Price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_showPrice</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Choose whether to show the child item prices or not.</comment>
+                            <depends>
+                                <show_grouped_product_options>1</show_grouped_product_options>
+                            </depends>
+                        </show_price>
+                    </fields>
+                </grouped_product>
+                <custom_options translate="label">
+                    <label>Custom Options Settings</label>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <show_custom_options translate="label">
+                            <label>Show Custom Options</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_custom_options>
+                        <add_pagebreak translate="label">
+                            <label>Show on New Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show this section on a new page instead of adding it to an existing page.</comment>
+                            <depends>
+                                <show_custom_options>1</show_custom_options>
+                            </depends>
+                        </add_pagebreak>
+                        <show_price translate="label">
+                            <label>Show Item Price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_showPrice</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Choose whether to show the custom option prices or not.</comment>
+                            <depends>
+                                <show_custom_options>1</show_custom_options>
+                            </depends>
+                        </show_price>
+                    </fields>
+                </custom_options>
+                <footer translate="label">
+                    <label>PDF Footer Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>41</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_footer translate="label">
+                            <label>Show Footer</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_footer>
+                        <show_url translate="label">
+                            <label>Show Product Page URL</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_footer>1</show_footer>
+                            </depends>
+                        </show_url>
+                        <show_timestamp translate="label">
+                            <label>Show Timestamp</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_footer>1</show_footer>
+                            </depends>
+                        </show_timestamp>
+                        <show_pagenumber translate="label">
+                            <label>Show Pagination</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_footer>1</show_footer>
+                            </depends>
+                        </show_pagenumber>
+                        <pagenumber_fontcolor translate="label">
+                            <label>Page Number Font Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>131</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_footer>1</show_footer>
+                                <show_pagenumber>1</show_pagenumber>
+                            </depends>
+                        </pagenumber_fontcolor>
+                        <use_custom_pagenumber_font translate="label">
+                            <label>Use Custom Page Number Font</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>132</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_footer>1</show_footer>
+                                <show_pagenumber>1</show_pagenumber>
+                            </depends>
+                        </use_custom_pagenumber_font>
+                        <pagenumber_font_family translate="label">
+                            <label>Page Number Font Family</label>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_fontPicker</frontend_model>
+                            <sort_order>133</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_footer>1</show_footer>
+                                <show_pagenumber>1</show_pagenumber>
+                                <use_custom_pagenumber_font>1</use_custom_pagenumber_font>
+                            </depends>
+                        </pagenumber_font_family>
+                        <pagenumber_background translate="label">
+                            <label>Pagination Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>134</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_footer>1</show_footer>
+                                <show_pagenumber>1</show_pagenumber>
+                            </depends>
+                        </pagenumber_background>
+                        <footer_fontsize translate="label">
+                            <label>Footer Font Size</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>plugincompany_productleaflet/system_config_source_fontsize</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_footer>1</show_footer>
+                            </depends>
+                        </footer_fontsize>
+                        <footer_fontcolor translate="label">
+                            <label>Footer Font Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>141</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_footer>1</show_footer>
+                            </depends>
+                        </footer_fontcolor>
+                        <use_custom_footer_font translate="label">
+                            <label>Use Custom Footer Font</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>142</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_footer>1</show_footer>
+                            </depends>
+                        </use_custom_footer_font>
+                        <footer_font_family translate="label">
+                            <label>Footer Font Family</label>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_fontPicker</frontend_model>
+                            <sort_order>143</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_footer>1</show_footer>
+                                <use_custom_footer_font>1</use_custom_footer_font>
+                            </depends>
+                        </footer_font_family>
+                    </fields>
+                </footer>
+                <custom_css translate="label">
+                    <label>Custom CSS Rules</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <css>
+                            <label>Custom CSS</label>
+                            <comment><![CDATA[You can add custom CSS for the entire PDF here. To view a PDF as HTML, add &html=1 to the URL in your browser.]]></comment>
+                            <frontend_model>plugincompany_productleaflet/adminhtml_config_customCss</frontend_model>
+                            <frontend_type>textarea</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>10</sort_order>
+                        </css>
+                    </fields>
+                </custom_css>
+            </groups>
+        </plugincompany_productleaflet>
+    </sections>
+</config>

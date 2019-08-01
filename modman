@@ -1,0 +1,11 @@
+app/code/local/PluginCompany/ProductLeaflet app/code/local/PluginCompany/ProductLeaflet
+app/design/adminhtml/default/default/layout/plugincompany/productleaflet.xml app/design/adminhtml/default/default/layout/plugincompany/productleaflet.xml
+app/design/adminhtml/default/default/template/plugincompany/productleaflet app/design/adminhtml/default/default/template/plugincompany/productleaflet
+app/design/frontend/base/default/template/plugincompany/productleaflet app/design/frontend/base/default/template/plugincompany/productleaflet
+app/etc/modules/PluginCompany_ProductLeaflet.xml app/etc/modules/PluginCompany_ProductLeaflet.xml
+app/locale/en_US/PluginCompany_ProductLeaflet.csv app/locale/en_US/PluginCompany_ProductLeaflet.csv
+js/plugincompany/jquerynoconflict.js js/plugincompany/jquerynoconflict.js
+js/plugincompany/productleaflet js/plugincompany/productleaflet
+lib/PC_Mpdf6.1 lib/PC_Mpdf6.1
+media/plugincompany/productleaflet media/plugincompany/productleaflet
+skin/frontend/base/default/css/plugincompany/productleaflet skin/frontend/base/default/css/plugincompany/productleaflet
