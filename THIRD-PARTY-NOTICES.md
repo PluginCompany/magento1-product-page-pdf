@@ -14,3 +14,5 @@ files are kept unchanged in the files and directories listed.
 | [Sortable (RubaXa)](https://github.com/SortableJS/Sortable) | `js/plugincompany/productleaflet/lib/sortable/` | 1.6.1 | MIT |
 | [Bootstrap CSS + Glyphicons Halflings](https://getbootstrap.com/) | `skin/frontend/base/default/css/plugincompany/productleaflet/bootstrap/` | 3.3.7 | MIT |
 | [mPDF (renamed dir) incl. FPDI 1.6.1 (MIT), FPDF-derived code, TTFontFile (LGPL), hyphenation patterns (LGPL)](https://github.com/mpdf/mpdf) | `lib/PC_Mpdf6.1/` | 6.1 | GPL-2.0 (LICENSE.txt) |
+
+The bundled mPDF copy is trimmed: the upstream standalone scripts and test files that the extension does not use (`compress.php`, `includes/out.php`, `utils/`, `tests/`, `phpunit.xml`) were removed on 2026-10-23. `mpdf.php` and `config_fonts.php` contain small local changes.
